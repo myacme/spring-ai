@@ -1,4 +1,4 @@
-package com.chinapopin.service;
+package com.ljx.service;
 
 import org.springframework.ai.chat.ChatClient;
 import org.springframework.ai.chat.ChatResponse;

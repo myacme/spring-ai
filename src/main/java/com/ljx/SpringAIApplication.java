@@ -1,4 +1,4 @@
-package com.chinapopin;
+package com.ljx;
 
 
 import org.springframework.boot.SpringApplication;

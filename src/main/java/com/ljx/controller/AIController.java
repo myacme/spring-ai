@@ -1,8 +1,12 @@
-package com.chinapopin.controller;
+package com.ljx.controller;
 
-import com.chinapopin.entity.ChatRequest;
-import com.chinapopin.service.DeepSeekService;
-import org.springframework.web.bind.annotation.*;
+
+import com.ljx.entity.ChatRequest;
+import com.ljx.service.DeepSeekService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/ai")

@@ -1,4 +1,4 @@
-package com.chinapopin.entity;
+package com.ljx.entity;
 
 
 import lombok.Data;

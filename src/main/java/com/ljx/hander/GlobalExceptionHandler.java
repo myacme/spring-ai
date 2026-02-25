@@ -1,4 +1,4 @@
-package com.chinapopin.hander;
+package com.ljx.hander;
 
 
 import org.springframework.ai.openai.api.common.OpenAiApiException;
