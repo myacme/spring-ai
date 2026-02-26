@@ -1,30 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+<configuration debug="false">
+    <!--以下三行一定注释掉，否则还会打印部分debug日志，o.apache.commons.httpclient.HttpClient-->
+    <!--    <logger name="org.apache" level="INFO" />-->
+    <!--    <logger name="org.apache.http.wire" level="INFO" />-->
+    <!--    <logger name="org.apache.http.headers" level="INFO" />-->
+
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%date{yyyy-MM-dd HH:mm:ss.SSS}  %highlight(%-3level) %magenta(%-3relative) --- [%yellow(%1thread)]: %msg%n"/>
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
         </encoder>
     </appender>
 
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/weather-agent.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/weather-agent.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-            <maxHistory>30</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
-        </encoder>
-    </appender>
-
-    <logger name="com.ljx.weather" level="DEBUG"/>
-    <logger name="org.springframework.ai" level="INFO"/>
-    
     <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

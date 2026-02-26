@@ -8,45 +8,14 @@ spring:
     openai:
       api-key: ${DEEPSEEK_API_KEY:your_deepseek_api_key}
       chat:
+        completions-path: /chat/completions    # 覆盖默认的 /v1/chat/completions
         options:
-          model: deepseek-chat
+          model: glm-4.7-flash
           temperature: 0.7
+          max-tokens: 4096
+          top-p: 0.9
 
 logging:
   level:
     com.ljx.weather: DEBUG
     org.springframework.ai: DEBUG
-
-weather:
-  # 模拟数据配置
-  mock-data: true
-  default-city: 北京
-  # 支持的城市列表
-  supported-cities: 
-    - 北京
-    - 上海
-    - 广州
-    - 深圳
-    - 杭州
-    - 南京
-    - 成都
-    - 武汉
-    - 西安
-    - 重庆
-
-deepseek:
-  api-key: ${DEEPSEEK_API_KEY:your_deepseek_api_key}
-  model: deepseek-chat
-  base-url: https://api.deepseek.com
-  temperature: 0.7
-  max-tokens: 1000
-
-# Actuator配置
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics
-  endpoint:
-    health:
-      show-details: always

@@ -12,6 +12,7 @@
     <artifactId>agent</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>express</module>
         <module>weather</module>
     </modules>
 

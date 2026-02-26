@@ -10,4 +10,5 @@ package com.ljx.weather.model;
  * @version 1.0.0
  * @create 2026/2/26 10:42
  */
-public record WeatherResponse(String city, String temperature, String condition, String humidity) {}
+public record WeatherRequest(String city) {
+}
