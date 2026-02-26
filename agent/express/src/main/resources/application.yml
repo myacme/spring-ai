@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: express-agent
+    
+logging:
+  level:
+    com.ljx.express: DEBUG
+    
+express:
+  kuaidi100:
+    key: ${KUAIDI100_KEY:your_kuaidi100_key}
+    customer: ${KUAIDI100_CUSTOMER:your_kuaidi100_customer}
+    url: https://poll.kuaidi100.com/poll/query.do
+    
+deepseek:
+  api-key: ${DEEPSEEK_API_KEY:your_deepseek_api_key}
+  model: deepseek-chat
+  base-url: https://api.deepseek.com
