@@ -6,7 +6,8 @@ spring:
     name: weather-agent
   ai:
     openai:
-      api-key: ${DEEPSEEK_API_KEY:your_deepseek_api_key}
+      api-key: ${ZHIPUAI_API_KEY:}
+      base-url: https://open.bigmodel.cn/api/paas/v4/
       chat:
         completions-path: /chat/completions    # 覆盖默认的 /v1/chat/completions
         options:
