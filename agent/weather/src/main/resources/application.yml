@@ -6,7 +6,7 @@ spring:
     name: weather-agent
   ai:
     openai:
-      api-key: ${ZHIPUAI_API_KEY:}
+      api-key: ${ZHIPUAI_API_KEY}
       base-url: https://open.bigmodel.cn/api/paas/v4/
       chat:
         completions-path: /chat/completions    # 覆盖默认的 /v1/chat/completions
@@ -20,3 +20,5 @@ logging:
   level:
     com.ljx.weather: DEBUG
     org.springframework.ai: DEBUG
+    org.springframework.ai.chat.client: TRACE
+    org.springframework.ai.tool: TRACE

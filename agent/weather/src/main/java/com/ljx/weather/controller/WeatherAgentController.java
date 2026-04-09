@@ -30,4 +30,13 @@ public class WeatherAgentController {
                 .call()
                 .content();
     }
+    
+    @GetMapping("/test-tool")
+    public String testTool() {
+        // 直接测试工具调用
+        return chatClient.prompt()
+                .user("请查询北京的天气")
+                .call()
+                .content();
+    }
 }

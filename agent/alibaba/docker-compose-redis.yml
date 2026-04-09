@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # Redis Stack - 包含向量搜索功能
+  redis-stack:
+    image: redis/redis-stack:latest
+    container_name: redis-stack-rag
+    ports:
+      - "6379:6379"   # Redis 端口
+      - "8001:8001"   # Redis Insight Web UI
+    environment:
+      - REDIS_ARGS=--save 60 1 --loglevel notice
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  redis-data:
+    driver: local
+
+# 使用说明：
+# 1. 启动 Redis Stack: docker-compose -f docker-compose-redis.yml up -d
+# 2. 访问 Redis Insight: http://localhost:8001
+# 3. 停止服务: docker-compose -f docker-compose-redis.yml down
+# 4. 查看日志: docker-compose -f docker-compose-redis.yml logs -f

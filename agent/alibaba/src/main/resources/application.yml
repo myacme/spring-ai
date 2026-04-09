@@ -1,0 +1,45 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: spring-ai-alibaba-demo
+  ai:
+    dashscope:
+      api-key: ${QWEN_API_KEY}
+      embedding:
+        model: text-embedding-v2
+      chat:
+        enabled: false  # 禁用自动配置，使用自定义的多模型配置
+#      chat:
+#        options:
+#          model: qwen-max  # 可选: qwen-turbo, qwen-plus, qwen-max, qwen-long
+    # Milvus 向量数据库配置
+    vectorstore:
+      milvus:
+        client:
+          host: ${MILVUS_HOST:localhost}
+          port: ${MILVUS_PORT:19530}
+          username: ${MILVUS_USERNAME:}  # Milvus 默认无需认证，留空即可
+          password: ${MILVUS_PASSWORD:}  # Milvus 默认无需认证，留空即可
+        databaseName: ${MILVUS_DATABASE:default}
+        collectionName: ${MILVUS_COLLECTION:spring_ai_collection}
+        embeddingDimension: 1536  # DashScope text-embedding-v2 的维度
+        indexType: IVF_FLAT
+        metricType: COSINE
+        initializeSchema: true  # 自动初始化集合结构
+      # Redis Stack 向量数据库配置
+      redis:
+        host: ${REDIS_HOST:localhost}
+        port: ${REDIS_PORT:6379}
+        password: ${REDIS_PASSWORD:}
+        index: ${REDIS_INDEX:spring-ai-index}
+        prefix: ${REDIS_PREFIX:doc:}
+
+logging:
+  level:
+    com.ljx.alibaba: DEBUG
+    com.alibaba.cloud.ai: DEBUG
+    io.milvus: INFO
+    org.springframework.ai.chat.client: TRACE
+    org.springframework.ai.tool: TRACE
